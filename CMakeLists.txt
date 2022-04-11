@@ -387,6 +387,11 @@ endif()
 cmake_dependent_option(CURL_USE_OPENSSL "Use OpenSSL code. Experimental" ${openssl_default} CURL_ENABLE_SSL OFF)
 option(CURL_DISABLE_OPENSSL_AUTO_LOAD_CONFIG "Disable automatic loading of OpenSSL configuration" OFF)
 
+option(FORCE_OPEN_OPENSSL "Force open OpenSSL" OFF)
+if(FORCE_OPEN_OPENSSL)
+  set(CURL_USE_OPENSSL ON)
+endif()
+
 count_true(enabled_ssl_options_count
   CURL_USE_SCHANNEL
   CURL_USE_SECTRANSP
